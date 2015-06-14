@@ -1,0 +1,187 @@
+/*!
+ * Coffce-Less
+ *
+ * The base less —— Gird system and some Mixins
+ * Reference from Bootstrap
+ */
+
+//
+// Grid system
+// --------------------------------------------------
+
+@grid-columns: 12;
+@grid-column-padding: 15px;
+
+.row() {
+    margin-left: -@grid-column-padding;
+    margin-right: -@grid-column-padding;
+    .f-clearfix();
+}
+
+.column(@columns) {
+    &:extend(.g-column);
+    width: percentage(@columns / @grid-columns);
+}
+
+.column-offset(@columns) {
+    margin-left: percentage(@columns / @grid-columns);
+}
+
+.build-column(@count) when (@count > 0) {
+    .build-column((@count - 1));
+    .g-column-@{count} {
+        .column(@count);
+    }
+}
+
+.build-column(@grid-columns);
+
+.g-row {
+    .row();
+}
+.g-column {
+    float: left;
+    padding-left: @grid-column-padding;
+    padding-right: @grid-column-padding;
+    min-height: 1px;
+    .box-sizing(border-box);
+}
+
+//
+// Mixins: Browser Support
+// --------------------------------------------------
+
+.box-sizing(@box-model) {
+    -webkit-box-sizing: @box-model;
+    -moz-box-sizing: @box-model;
+    box-sizing: @box-model;
+}
+
+.text-shadow(@shadow) {
+    -webkit-text-shadow: @shadow;
+    text-shadow: @shadow;
+}
+
+.box-shadow(@shadow) {
+    -webkit-box-shadow: @shadow;
+    box-shadow: @shadow;
+}
+
+.animation(@animation) {
+    -webkit-animation: @animation;
+    animation: @animation;
+}
+
+.transition(@transition) {
+    -webkit-transition: @transition;
+    -moz-transition: @transition;
+    -o-transition: @transition;
+    transition: @transition;
+}
+
+.transition-delay(@transition-delay) {
+    -webkit-transition-delay: @transition-delay;
+    -moz-transition-delay: @transition-delay;
+    -o-transition-delay: @transition-delay;
+    transition-delay: @transition-delay;
+}
+
+.transition-duration(@transition-duration) {
+    -webkit-transition-duration: @transition-duration;
+    -moz-transition-duration: @transition-duration;
+    -o-transition-duration: @transition-duration;
+    transition-duration: @transition-duration;
+}
+
+.transform(@transform) {
+    -webkit-transform: @transform;
+    -moz-transform: @transform;
+    -ms-transform: @transform;
+    -o-transform: @transform;
+    transform: @transform;
+}
+
+.transform-origin(@origin) {
+    -webkit-transform-origin: @origin;
+    transform-origin: @origin;
+}
+
+.user-select(@select) {
+    -webkit-user-select: @select;
+    -moz-user-select: @select;
+    -ms-user-select: @select;
+    -o-user-select: @select;
+    user-select: @select;
+}
+
+.opacity(@opacity) {
+    opacity: @opacity;
+    //IE
+    @opacity-ie: @opacity * 100;
+    -ms-filter: ~"alpha(opacity=@{opacity-ie})";
+}
+
+.placeholder(@color) {
+    &:-moz-placeholder {
+        color: @color;
+    } // Firefox 4-18
+    &::-moz-placeholder {
+        color: @color;
+    } // Firefox 19+
+    &:-ms-input-placeholder {
+        color: @color;
+    } // Internet Explorer 10+
+    &::-webkit-input-placeholder {
+        color: @color;
+    } // Safari and Chrome
+}
+
+.rgba (@r, @g ,@b, @a) {
+    background-color: rgba(@r, @g, @b, @a);
+    //IE
+    @color: argb(rgba(@r, @g, @b, @a));
+    -ms-filter: ~'"progid:DXImageTransform.Microsoft.gradient(startColorstr=@{color}, endColorstr=@{color})"';
+}
+
+.rgba(@r, @g, @b, @a, false) {
+    background-color: rgb(@r, @g, @b);
+    background-color: rgba(@r, @g, @b, @a);
+}
+
+//
+// Mixins: Function Class
+// --------------------------------------------------
+
+.f-clearfix {
+    *zoom: 1;
+    &:before, &:after {
+        content: " "; 
+        display: table; 
+        line-height: 0;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+.f-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.f-hide {
+    display: none;
+}
+
+.f-bfc {
+    overflow: hidden;
+}
+
+.f-fl {
+    float: left;
+}
+
+.f-fr {
+    float: right;
+}
