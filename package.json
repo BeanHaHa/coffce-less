@@ -1,0 +1,23 @@
+{
+  "name": "Coffce-Less",
+  "version": "1.0.0",
+  "description": "A simple Less library, include Grid System and some Mixins.",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Coffcer/Coffce-Less.git"
+  },
+  "keywords": [
+    "less",
+    "css"
+  ],
+  "author": "Coffcer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Coffcer/Coffce-Less/issues"
+  },
+  "homepage": "https://github.com/Coffcer/Coffce-Less"
+}
