@@ -1,45 +1,30 @@
 /*!
  * Coffce-Less
- *
- * The base less —— Gird system and some Mixins
- * Reference from Bootstrap
+ * Less基础类库，包含栅格系统、浏览器兼容和常用class
  */
 
 //
-// Grid system
+// 简单的栅格系统
 // --------------------------------------------------
 
 @grid-columns: 12;
 @grid-column-padding: 15px;
 
-.row() {
-    margin-left: -@grid-column-padding;
-    margin-right: -@grid-column-padding;
-    .f-clearfix();
-}
-
-.column(@columns) {
-    &:extend(.g-column);
-    width: percentage(@columns / @grid-columns);
-}
-
-.column-offset(@columns) {
-    margin-left: percentage(@columns / @grid-columns);
-}
-
+// 循环生成cf-column-*和cf-column-offset-*
 .build-column(@count) when (@count > 0) {
     .build-column((@count - 1));
-    .g-column-@{count} {
-        .column(@count);
+    .cf-column-@{count} {
+        &:extend(.cf-column);
+        width: percentage(@count / @grid-columns);
+    }
+    .cf-column-offset-@{count} {
+        margin-left: percentage(@count / @grid-columns);
     }
 }
 
 .build-column(@grid-columns);
 
-.g-row {
-    .row();
-}
-.g-column {
+.cf-column {
     float: left;
     padding-left: @grid-column-padding;
     padding-right: @grid-column-padding;
@@ -47,8 +32,15 @@
     .box-sizing(border-box);
 }
 
+.cf-row {
+    margin-left: -@grid-column-padding;
+    margin-right: -@grid-column-padding;
+    .cf-clearfix();
+}
+
+
 //
-// Mixins: Browser Support
+// 浏览器兼容
 // --------------------------------------------------
 
 .box-sizing(@box-model) {
@@ -149,10 +141,10 @@
 }
 
 //
-// Mixins: Function Class
+// 常用class
 // --------------------------------------------------
 
-.f-clearfix {
+.cf-clearfix {
     *zoom: 1;
     &:before, &:after {
         content: " "; 
@@ -164,24 +156,28 @@
     }
 }
 
-.f-truncate {
+.cf-truncate {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.f-hide {
+.cf-hide {
     display: none;
 }
 
-.f-bfc {
+.cf-oh {
     overflow: hidden;
 }
 
-.f-fl {
+.cf-fl {
     float: left;
 }
 
-.f-fr {
+.cf-fr {
     float: right;
+}
+
+.cf-tac {
+    text-align: center;
 }

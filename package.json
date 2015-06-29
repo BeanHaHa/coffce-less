@@ -1,7 +1,7 @@
 {
   "name": "coffce-less",
-  "version": "1.0.0",
-  "description": "A simple Less library, include Grid System and some Mixins.",
+  "version": "0.0.1",
+  "description": "Less基础类库，包含栅格系统、浏览器兼容和常用class",
   "main": " ",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
