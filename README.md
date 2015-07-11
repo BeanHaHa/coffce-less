@@ -2,12 +2,11 @@ Coffce-Less
 ---
 一个模块化的Less基础类库，包含栅格系统、原子类、常用class和浏览器兼容等模块。
 
-##如何使用
-###安装：
-    npm install coffce-less
-    
-###使用：
+
+##使用：
 首先在你的less里@import coffce.less，再根据你的需要，调用各个模块的init初始化模块
+
+    npm install coffce-less
 ```
 @import "coffce";
 
@@ -17,7 +16,7 @@ Coffce-Less
 .init-padding();
 ```
 
-###栅格模块
+##栅格模块
 **.init-grid(@count, @padding, @width)**
 
 参数 | 默认值 | 描述
