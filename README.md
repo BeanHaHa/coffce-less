@@ -11,7 +11,6 @@ Coffce-Less
 ```
 @import "coffce";
 
-.init-all();
 .init-grid();
 .init-common();
 .init-margin();
@@ -19,7 +18,7 @@ Coffce-Less
 ```
 
 ###栅格模块
-    .init-grid(@count, @padding, @width)
+**.init-grid(@count, @padding, @width)**
 
 参数 | 默认值 | 描述
 ---- | ----- | ---
@@ -34,8 +33,10 @@ class | 描述
 ----- | ----
 .cf-container | 容器
 .cf-row | 行，必须放置在cf-container中
-.cf-column-1..2..3.. | 列，必须放置在cf-row中
-.cf-column-offset-1..2..3.. | 偏移
+.cf-column-1、.cf-column-2... | 列，必须放置在cf-row中
+.cf-column-offset-1、.cf-column-offset-2... | 列偏移
+
+
 
 
     
