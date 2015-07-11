@@ -60,7 +60,7 @@ class | 描述
 **生成后的class(下面的5只是个例子)：**
 
 margin | padding | 描述
------ | -----
+----- | ----- | -----
 .cf-mt-5 | .cf-pt-5 | margin-top: 5px 与 padding-top: 5px
 .cf-mb-5 | .cf-pb-5 | margin-bottom和padding-bottom
 .cf-ml-5 | .cf-pl-5 | margin-left和padding-left
