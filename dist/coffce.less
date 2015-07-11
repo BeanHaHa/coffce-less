@@ -4,11 +4,12 @@
  */
 
 //
-// 简单的栅格系统
+// 栅格系统 生成器
 // --------------------------------------------------
 
 @grid-columns: 12;
 @grid-column-padding: 15px;
+@grid-container-width: 100%;
 
 // 循环生成cf-column-*和cf-column-offset-*
 .build-column(@count) when (@count > 0) {
@@ -21,8 +22,6 @@
         margin-left: percentage(@count / @grid-columns);
     }
 }
-
-.build-column(@grid-columns);
 
 .cf-column {
     float: left;
@@ -38,9 +37,81 @@
     .cf-clearfix();
 }
 
+.cf-container {
+    padding-left: @grid-column-padding;
+    padding-right: @grid-column-padding;
+    width: @grid-container-width;
+}
 
 //
-// 浏览器兼容
+// margin、padding原子类 生成器
+// --------------------------------------------------
+
+.build-margin(@count) when (@count >= 0) {
+    .build-margin((@count - 5));
+    .cf-mt-@{count} {
+        margin-top: @count * 1px;
+    }
+    .cf-mb-@{count} {
+        margin-bottom: @count * 1px;
+    }
+    .cf-mtb-@{count} {
+        margin-top: @count * 1px;
+        margin-bottom: @count * 1px;
+    }
+    .cf-ml-@{count} {
+        margin-left: @count * 1px;
+    }
+    .cf-mr-@{count} {
+        margin-right: @count * 1px;
+    }
+    .cf-mlr-@{count} {
+        margin-left: @count * 1px;
+        margin-right: @count * 1px;
+    }
+}
+
+.build-padding(@count) when (@count >= 0) {
+    .build-padding((@count - 5));
+    .cf-pt-@{count} {
+        padding-top: @count * 1px;
+    }
+    .cf-pb-@{count} {
+        padding-bottom: @count * 1px;
+    }
+    .cf-pl-@{count} {
+        padding-left: @count * 1px;
+    }
+    .cf-pr-@{count} {
+        padding-right: @count * 1px;
+    }
+    .cf-pa-@{count} {
+        padding: @count * 1px;
+    }
+    .cf-plr-@{count} {
+        padding-left: @count * 1px;
+        padding-right: @count * 1px;
+    }
+    .cf-ptb-@{count} {
+        padding-top: @count * 1px;
+        padding-bottom: @count * 1px;
+    }
+}
+
+.build-width(@count) when (@count >= 0) {
+    .build-width((@count - 5));
+    .cf-w-@{count} {
+        width: @count * 1px;
+    }
+    .cf-w-@{count}p {
+        width: @count * 1%;
+    }
+}
+
+
+//
+// 浏览器兼容，不建议使用
+// 建议使用autoprefixer等自动化工具完成
 // --------------------------------------------------
 
 .box-sizing(@box-model) {
@@ -180,4 +251,28 @@
 
 .cf-tac {
     text-align: center;
+}
+.cf-tar {
+    text-align: right;
+}
+.cf-tal {
+    text-align: left;
+}
+
+// 配合父元素的overflow: hidden，可以实现多栏等高
+.cf-high {
+    margin-bottom: -3000px;
+    padding-bottom: 3000px
+}
+
+.cf-width-full {
+    width: 100%;
+}
+
+.cf-height-full {
+    height: 100%;
+}
+
+.cf-mh-full {
+    min-height: 100vh;
 }
