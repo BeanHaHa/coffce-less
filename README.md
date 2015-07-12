@@ -27,6 +27,9 @@ coffce-less
 // 生成以上所有模块，这个方法对各个模块使用的都是默认参数，建议最好不要使用它
 .init-all();
 ```
+##Reset
+**.init-reset()**<br>
+重置所有标签样式
 
 ##栅格模块
 **.init-grid(@count, @padding, @width)**<br>
@@ -81,10 +84,6 @@ margin | padding | 描述
 参数 | 默认值 | 描述
 ---- | ----- | ---
 @pre | cf | 前缀，默认为cf，生成后的class为.cf-xxx
-
-##Reset
-**.init-reset()**<br>
-重置所有标签样式
 
 ##浏览器兼容与前缀
 这部分不需要init，具体有哪些可以直接看coffce.less文件。<br>
