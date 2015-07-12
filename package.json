@@ -1,6 +1,6 @@
 {
   "name": "coffce-less",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "一个模块化的Less基础类库，包含栅格系统、原子类、常用class和浏览器兼容等模块",
   "main": "./dist/coffce.less",
   "repository": {
