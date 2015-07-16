@@ -19,7 +19,7 @@
 // @width: container宽度，设为百分比则为响应式布局
 // @pre: 前缀
 .init-grid(@count: 12, @padding: 15px, @width: 100%, @pre: cf) {
-    .@{pre}-column {
+    .column() {
         float: left;
         padding-left: @padding;
         padding-right: @padding;
@@ -51,11 +51,11 @@
     .build-column(@i) when (@i > 0) {
         .build-column((@i - 1));
         
-        .@{pre}-column-@{count} {
-            &:extend(.cf-column);
+        .@{pre}-column-@{i} {
             width: percentage(@i / @count);
+            .column();
         }
-        .@{pre}-column-offset-@{count} {
+        .@{pre}-column-offset-@{i} {
             margin-left: percentage(@i / @count);
         }
     }
@@ -200,6 +200,17 @@
     .@{pre}-height-full {
         height: 100%;
     }
+    .@{pre}-m0 {
+        margin: 0 !important;
+    }
+    .@{pre}-p0 {
+        padding: 0 !important;
+    }
+}
+
+// flexbox布局
+.init-flex(@pre: cf) {
+
 }
 
 // reset
@@ -287,6 +298,7 @@
     background-color: rgb(@r, @g, @b);
     background-color: rgba(@r, @g, @b, @a);
 }
+
 
 
 // 浏览器前缀，不建议使用
